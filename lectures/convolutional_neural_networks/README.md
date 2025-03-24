@@ -31,6 +31,7 @@ The visual world has the following properties:
 - Translation invariance.
 - Locality: nearby pixels are more strongly correlated
 - Spatial hierarchy: complex and abstract concepts are composed from simple, local elements.
+- 小元素组成大元素
 
 Classical models are not designed to detect local patterns in images.
 
@@ -136,7 +137,7 @@ Output size = input size
 ### The pooling operation
 
 - Reduces the dimensionality of feature maps.
-- Often done by selecting maximum values (*max pooling*).
+- Often done by selecting maximum values (*max pooling*).只取最大值，减少feature maps的大小
 
 [![Max pooling with 2x2 filter and stride of 2](images/maxpool_animation.gif)](https://developers.google.com/machine-learning/practica/image-classification/convolutional-neural-networks)
 
