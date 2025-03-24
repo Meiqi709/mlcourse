@@ -214,6 +214,7 @@ The training algorithm is as follows:
 ### Training hyperparameters
 
 Hyperparameters ($\neq$ model parameters) are adjustable configuration values that let you control the model training process.
+hyperparameters 的选择高度随机和高度决定于要处理的问题，但是有一些算法和方法可以测试不同的组合
 
 - **Number of epochs**: an epoch is finished when all data samples have been presented to the model during training
 - **Learning rate**: rate of parameter change during gradient descent.
@@ -275,12 +276,32 @@ $\lambda$ is called the **regularization rate**.
 
 #### Dropout
 
-During training, some input units are randomly set to 0. The network must adapt and become more generic. The more units dropped out, the stronger the regularization.
+During training, some input units are randomly set to 0 （让某些权重直接变为0，避免太过于某些units）. The network must adapt and become more generic. The more units dropped out, the stronger the regularization.
+
 
 ![Dropout](images/dropout.png)
 
 ---
 
 ### Interactive recap
+- Batch Size（批量大小）是什么？ Batch Size（批量大小）是指在一次训练迭代（iteration）中送入神经网络的样本数量
+- Learning Rate（学习率）是什么？学习率是控制模型在每次参数更新时的步长，决定了神经网络学习的速度。在梯度下降（Gradient Descent）过程中，模型会调整参数（如权重来最小化损失函数 𝐿。学习率决定了每次更新的幅度
+- 在深度学习中，époque（法语）= epoch（英语），指的是整个训练集被完整地传递（前向传播 + 反向传播）一次的过程。
+- 这是关于防止过拟合（Overfitting）的方法，主要涉及正则化（Regularization）和Dropout。这是在机器学习和深度学习中常见的概念。
 
+1. 正则化（Regularization）
+L1 正则化（Lasso）：
+L1 正则化的作用是让某些权重变为 0，从而稀疏化权重，适用于特征选择。
+L2 正则化（Ridge）：
+L2 正则化会让权重更小但不会变成 0，从而减少模型的复杂度，防止过拟合。
+正则化率（λ, Lambda）： λ 控制正则化的强度，λ 越大，正则化越强。
+
+2. Dropout
+在训练过程中，随机将一部分神经元（输入单元）置为 0。
+
+这样可以防止模型对某些特定的神经元依赖过强，使模型学到更泛化的特征，提高鲁棒性。
+
+Dropout 率（即被“丢弃”的神经元比例）越高，正则化越强。
+
+这些技术可以减少模型在训练集上的过拟合，使其更好地泛化到测试集或新数据。
 [![Neural networks playground (complete)](images/tf_playground_complete.png)](https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.48717&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false)
